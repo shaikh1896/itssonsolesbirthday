@@ -21,6 +21,8 @@
   5. THE SONG                — put a song file (e.g. song.mp3) in the
                                same folder
   6. THE SECOND DINNER OPTION — details for the home-cooked + movie night
+  7. TAP_MESSAGES            — the 5 lines that appear one at a time as
+                               she taps the heart on the teaser page
   ========================================================================
 -->
 
@@ -253,6 +255,18 @@
   }
   .tap-hearts-row span.filled { opacity: 1; transform: scale(1.15); }
   .teaser-title { font-size: clamp(1.4rem, 5vw, 2rem); color: var(--coral-deep); max-width: 20ch; margin-top: 1rem;}
+  .tap-message {
+    margin-top: 1.6rem;
+    min-height: 3.4em;
+    max-width: 26ch;
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
+    color: var(--grape-deep);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tap-message.show { opacity: 1; transform: translateY(0); }
 
   /* ---------- page 3: wish (gift unwrap) ---------- */
   #page-wish { background: linear-gradient(180deg, var(--cream) 0%, var(--sunshine) 130%); }
@@ -429,6 +443,7 @@
   <h2 class="teaser-title">tap this heart 5 times. I dare you 💛</h2>
   <div class="tap-heart" id="tap-heart">🤍</div>
   <div class="tap-hearts-row" id="tap-hearts-row"></div>
+  <p class="tap-message" id="tap-message"></p>
   <button class="btn" id="teaser-continue" disabled>okay, keep going →</button>
 </section>
 
@@ -606,8 +621,20 @@ I'm so lucky to love you. Happy birthday, and here's to everything still ahead o
   const tapHeart = document.getElementById('tap-heart');
   const tapHeartsRow = document.getElementById('tap-hearts-row');
   const teaserContinue = document.getElementById('teaser-continue');
+  const tapMessage = document.getElementById('tap-message');
   const TAPS_NEEDED = 5;
   let taps = 0;
+
+  // 🎀 EDIT ME: TAP_MESSAGES — one line appears after each tap (5 total).
+  // Keep them short so they fit on one screen. Swap in your own words any time.
+  const TAP_MESSAGES = [
+    "Sonsoles, You really is THE MOST BEAUTIFUL girl!",
+    "Soneoles, I dont know how the world would be for me, if you were not born on this day!",
+    "Sonsoles, You are the most adorable person i ever met, So i thank this day that you were born!",
+    "Sonsoles, You are THE most GORGEOUS, PRETTY girl i ever met",
+    "Sonsoles, You deserve all the HAPPINESS and BEST in the world."
+  ];
+
   for (let i = 0; i < TAPS_NEEDED; i++) {
     const s = document.createElement('span');
     s.textContent = '💛';
@@ -619,6 +646,13 @@ I'm so lucky to love you. Happy birthday, and here's to everything still ahead o
     tapHeartsRow.children[taps - 1].classList.add('filled');
     tapHeart.style.transform = `scale(${1 + taps * 0.06})`;
     tapHeart.style.filter = `grayscale(${0.55 - taps * 0.11}) opacity(${0.55 + taps * 0.09})`;
+
+    tapMessage.classList.remove('show');
+    setTimeout(() => {
+      tapMessage.textContent = TAP_MESSAGES[taps - 1] || '';
+      tapMessage.classList.add('show');
+    }, taps === 1 ? 0 : 180);
+
     if (taps === TAPS_NEEDED) {
       tapHeart.textContent = '💖';
       teaserContinue.removeAttribute('disabled');
@@ -747,6 +781,8 @@ I'm so lucky to love you. Happy birthday, and here's to everything still ahead o
     tapHeart.style.transform = 'scale(1)';
     tapHeart.style.filter = 'grayscale(0.55) opacity(0.55)';
     teaserContinue.setAttribute('disabled', '');
+    tapMessage.classList.remove('show');
+    tapMessage.textContent = '';
 
     giftBox.classList.remove('opened');
     giftBox.textContent = '🎁';
