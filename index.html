@@ -434,17 +434,16 @@
       <div class="heart-seal">💌</div>
     </div>
   </div>
-  <p class="tap-hint"><span>👆 tap the envelope to open it</span></p>
+  <p class="tap-hint"><span>👆 Sonsoles, tap it to open</span></p>
 </section>
 
 <!-- ============ PAGE 2 — curiosity teaser ============ -->
 <section class="page" id="page-teaser">
-  <p class="teaser-line">before the good stuff...</p>
-  <h2 class="teaser-title">tap this heart 5 times. I dare you 💛</h2>
+  <h2 class="teaser-title">tap my heart 5 times and watch it fall for you, all over again ❤️</h2>
   <div class="tap-heart" id="tap-heart">🤍</div>
   <div class="tap-hearts-row" id="tap-hearts-row"></div>
   <p class="tap-message" id="tap-message"></p>
-  <button class="btn" id="teaser-continue" disabled>okay, keep going →</button>
+  <button class="btn" id="teaser-continue" disabled>okay, LETSS GOO ma love →</button>
 </section>
 
 <!-- ============ PAGE 3 — the wish (unwrap) + photos ============ -->
@@ -453,15 +452,15 @@
   <div class="gift-box" id="gift-box">🎁</div>
   <div class="wish-content" id="wish-content">
     <!-- 🎀 EDIT ME: HER_NAME — change "Love" to her name everywhere you see it -->
-    <h1 class="wish-title">Happy Birthday,<br><span class="wish-name">Love</span> 🎂</h1>
+    <h1 class="wish-title">Happy Birthday,<br><span class="wish-name">Sonsoles, ma LOVE</span> 🎂</h1>
     <!-- 🎀 EDIT ME: THE WISH — write your own birthday wish here -->
     <p class="wish-sub">
-      Wishing my love the HAPPIEST BIRTHDAY! May this year bring you lots and lots of success, happiness and unforgettable memories. 
+      ¡Feliz cumpleaños, mi amor! Que este año te traiga muchísimo éxito, felicidad y recuerdos inolvidables. Te quiero con todo mi corazón. 
     </p>
     <div class="collage" id="collage"></div>
 
   </div>
-  <button class="btn" id="wish-continue" disabled style="margin-top:1.6rem;">there's more →</button>
+  <button class="btn" id="wish-continue" disabled style="margin-top:1.6rem;">I have a message for you →</button>
 </section>
 
 <!-- ============ PAGE 4 — the letter (click through) ============ -->
@@ -469,7 +468,7 @@
   <div class="letter-card">
     <div class="letter-heading">for you</div>
     <div class="letter-body" id="letter-body"></div>
-    <span class="letter-sign" id="letter-sign">— Yours</span>
+    <span class="letter-sign" id="letter-sign">— Shaikh</span>
     <div class="letter-next-row">
       <button class="btn" id="letter-next">keep reading →</button>
     </div>
@@ -478,15 +477,16 @@
 
 <!-- 🎀 EDIT ME: THE LETTER — this is the source text for the letter above.
      Leave a BLANK LINE between paragraphs; each one reveals on its own click. -->
-<template id="letter-source">I wanted to write down a few things I don't say enough.
+<template id="letter-source">I LOVE YOU!!
+  I wish you the HAPPIEST BIRTHDAY! May joy fill every single day of your life. May you always keep smilling and gets more and more happiness. May you achieve everything you wished for ma love!
+  
+  I wish you also the very best for your academics and career. I know you gonna do great everywhere!! Dont wanna sound boring though xD.
 
-Thank you for being exactly who you are — for your laugh, your patience with me, and the way you make ordinary days feel like something worth remembering.
-
-I'm so lucky to love you. Happy birthday, and here's to everything still ahead of us.</template>
+  It feels so good and lucky to have you. Happy birthday, and here's to everything still ahead of us.</template>
 
 <!-- ============ PAGE 5 — the choice ============ -->
 <section class="page" id="page-choice">
-  <h2 class="choice-title">So... what should we do on the 17th? 🎉</h2>
+  <h2 class="choice-title">You have two options, what would u like the best (or something else?)!? 🎉</h2>
   <p class="choice-sub">Pick one — I'll plan it either way.</p>
   <div class="choice-grid" id="choice-grid">
     <div class="choice-card" data-choice="indian">
@@ -505,7 +505,7 @@ I'm so lucky to love you. Happy birthday, and here's to everything still ahead o
 
 <!-- ============ PAGE 7 — closing ============ -->
 <section class="page" id="page-end">
-  <h2 class="end-title" id="end-title">the end 💛</h2>
+  <h2 class="end-title" id="end-title">Then, I'll pick you u at 7 pm ❤️</h2>
   <p class="end-sub" id="end-sub"></p>
   <button class="btn ghost" id="replay-btn" style="margin-top:1.8rem;">watch it again</button>
 </section>
@@ -556,7 +556,7 @@ I'm so lucky to love you. Happy birthday, and here's to everything still ahead o
 
   // ================= floating background decoration =================
   const floaters = document.getElementById('floaters');
-  const emojiSet = ['🎈','✨','🎈','💛','✨'];
+  const emojiSet = ['🎈','✨','🎈','❤️','✨'];
   for (let i = 0; i < 14; i++) {
     const el = document.createElement('div');
     el.className = 'floater';
@@ -629,14 +629,14 @@ I'm so lucky to love you. Happy birthday, and here's to everything still ahead o
   const TAP_MESSAGES = [
     "Sonsoles, You really is THE MOST BEAUTIFUL girl!",
     "Soneoles, I dont know how the world would be for me, if you were not born on this day!",
-    "Sonsoles, You are the most adorable person i ever met, So i thank this day that you were born!",
-    "Sonsoles, You are THE most GORGEOUS, PRETTY girl i ever met",
+    "Sonsoles, You are the MOST ADORABLE person i ever met, So i thank this day that you were born!",
+    "Sonsoles, You are THE MOST GORGEOUS, PRETTY girl like a moon i ever met",
     "Sonsoles, You deserve all the HAPPINESS and BEST in the world."
   ];
 
   for (let i = 0; i < TAPS_NEEDED; i++) {
     const s = document.createElement('span');
-    s.textContent = '💛';
+    s.textContent = '❤️';
     tapHeartsRow.appendChild(s);
   }
   tapHeart.addEventListener('click', () => {
